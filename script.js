@@ -31,3 +31,7 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+// learned Creating and inserting elements
+// Learned Deleting elements
+// learned select element
