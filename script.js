@@ -68,3 +68,6 @@ const logo = document.querySelector('.nav__logo');
 console.log(logo.src);
 console.log(logo.alt);
 console.log(logo.className);
+const link = document.querySelector('.twitter-link');
+console.log(link.href);
+console.log(link.getAttribute('href'));
