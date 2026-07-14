@@ -35,3 +35,25 @@ document.addEventListener('keydown', function (e) {
 // learned Creating and inserting elements
 // Learned Deleting elements
 // learned select element
+const header = document.querySelector('.header');
+
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+message.innerHTML =
+  'We use cookie for improved functionality and analytics, <button class="btn btn--close-cookie">Got it!</button>';
+
+header.append(message);
+// header.before(message);
+// header.after(message);
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
+
+// styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+console.log(message.style.height);
+// getComputedStyle give the element all style object
+console.log(getComputedStyle(message).height);
