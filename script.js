@@ -57,3 +57,8 @@ message.style.width = '120%';
 console.log(message.style.height);
 // getComputedStyle give the element all style object
 console.log(getComputedStyle(message).height);
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height) + 30 + 'px';
+
+// changing color
+document.documentElement.style.setProperty('--color-primary', 'orange');
