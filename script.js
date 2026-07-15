@@ -71,3 +71,11 @@ console.log(logo.className);
 const link = document.querySelector('.twitter-link');
 console.log(link.href);
 console.log(link.getAttribute('href'));
+
+// Implementing Smooth Scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+});
