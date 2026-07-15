@@ -89,3 +89,8 @@ const alertH1 = function (e) {
 };
 h1.addEventListener('mouseenter', alertH1);
 setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+
+// Random number
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+console.log(randomInt(4, 10));
