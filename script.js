@@ -61,7 +61,7 @@ message.style.height =
   Number.parseFloat(getComputedStyle(message).height) + 30 + 'px';
 
 // changing color
-document.documentElement.style.setProperty('--color-primary', 'orange');
+// document.documentElement.style.setProperty('--color-primary', 'orange');
 
 // Attributes
 const logo = document.querySelector('.nav__logo');
