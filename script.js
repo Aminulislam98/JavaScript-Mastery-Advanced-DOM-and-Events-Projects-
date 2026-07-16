@@ -93,4 +93,10 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 // document.querySelector('.nav').addEventListener('click', function (e) {});
 
 // page Navigation
-document.querySelectorAll('nav__link');
+document.querySelectorAll('.nav__link').forEach(el => {
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    console.log('Id', id);
+  });
+});
