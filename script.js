@@ -114,14 +114,44 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 // Traversing
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
 h1.firstElementChild.style.color = 'white';
 h1.lastElementChild.style.color = 'orangered';
 
 // going upwards: parents
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 h1.closest('.header').style.background = 'var(--gradient-secondary)';
 h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+// Building a tapped Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabContent = document.querySelectorAll('.operations__content');
+
+// Bad practice:
+// tabs.forEach(t => t.addEventListener('click', e => console.log('Tab:', e)));
+
+// Good practice
+tabContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard clause
+  if (!clicked) return;
+
+  // removing all active tab
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+
+  // removing active content
+  tabContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // Adding active tab
+  clicked.classList.add('operations__tab--active');
+
+  // Active content
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
