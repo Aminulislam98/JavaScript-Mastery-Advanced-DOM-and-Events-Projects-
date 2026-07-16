@@ -98,5 +98,6 @@ document.querySelectorAll('.nav__link').forEach(el => {
     e.preventDefault();
     const id = this.getAttribute('href');
     console.log('Id', id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   });
 });
