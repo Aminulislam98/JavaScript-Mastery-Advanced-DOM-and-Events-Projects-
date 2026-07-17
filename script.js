@@ -11,7 +11,8 @@ const message = document.createElement('div');
 const logo = document.querySelector('.nav__logo');
 const link = document.querySelector('.twitter-link');
 const nav = document.querySelector('.nav');
-
+const navHeight = nav.getBoundingClientRect();
+console.log(navHeight);
 // Modal window
 
 const openModal = function (e) {
@@ -187,10 +188,24 @@ window.addEventListener('scroll', function (e) {
 
 // The new intersection observer API
 
-const absCallBack = function () {};
-const absOptions = {
-  root: null,
-  threshold: 0.1,
+// const absCallBack = function (entries, observer) {};
+// const absOptions = {
+//   root: null,
+//   threshold: [0,0.2],
+// };
+// const observer = new IntersectionObserver(absCallBack, absOptions);
+// observer.observe(section1);
+
+// const header = document.querySelector('.header');
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  nav.classList.add('sticky');
 };
-const observer = new IntersectionObserver(absCallBack, absOptions);
-observer.observe(section1);
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
