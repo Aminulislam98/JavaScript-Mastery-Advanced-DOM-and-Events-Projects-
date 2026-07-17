@@ -12,7 +12,7 @@ const logo = document.querySelector('.nav__logo');
 const link = document.querySelector('.twitter-link');
 const nav = document.querySelector('.nav');
 const navHeight = nav.getBoundingClientRect();
-console.log(navHeight);
+
 // Modal window
 
 const openModal = function (e) {
@@ -181,7 +181,6 @@ const initialCoords = section1.getBoundingClientRect();
 console.log(initialCoords);
 
 window.addEventListener('scroll', function (e) {
-  console.log(e);
   if (this.window.scrollY > initialCoords.top) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
 });
@@ -200,8 +199,9 @@ window.addEventListener('scroll', function (e) {
 const stickyNav = function (entries) {
   const [entry] = entries;
   if (!entry.isIntersecting) nav.classList.add('sticky');
-  nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
 };
+
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
@@ -211,9 +211,20 @@ headerObserver.observe(header);
 
 // Revealing Elements on scroll
 const allSections = document.querySelectorAll('.section');
-const revealSection = function (entries, observer) {};
-const sectionObserver = new IntersectionObserver(revealSection, {});
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
+  section.classList.add('section--hidden');
 });
