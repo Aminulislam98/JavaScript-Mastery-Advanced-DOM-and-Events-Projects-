@@ -10,6 +10,7 @@ const header = document.querySelector('.header');
 const message = document.createElement('div');
 const logo = document.querySelector('.nav__logo');
 const link = document.querySelector('.twitter-link');
+const nav = document.querySelector('.nav');
 
 // Modal window
 
@@ -123,8 +124,8 @@ h1.lastElementChild.style.color = 'orangered';
 // going upwards: parents
 // console.log(h1.parentNode);
 // console.log(h1.parentElement);
-h1.closest('.header').style.background = 'var(--gradient-secondary)';
-h1.closest('h1').style.background = 'var(--gradient-primary)';
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
+// h1.closest('h1').style.background = 'var(--gradient-primary)';
 
 // Building a tapped Component
 const tabs = document.querySelectorAll('.operations__tab');
@@ -154,4 +155,29 @@ tabContainer.addEventListener('click', function (e) {
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
+});
+
+// Passing arguments to event handlers
+// Menu fade animation
+nav.addEventListener('mouseover', function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = 0.5;
+    });
+    logo.style.opacity = 0.5;
+  }
+});
+nav.addEventListener('mouseout', function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = 1;
+    });
+    logo.style.opacity = 0.5;
+  }
 });
