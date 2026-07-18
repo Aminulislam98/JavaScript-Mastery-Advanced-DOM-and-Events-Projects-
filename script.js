@@ -251,3 +251,26 @@ const imgObserver = new IntersectionObserver(loadImg, {
   rootMargin: '200px',
 });
 imgTargets.forEach(img => imgObserver.observe(img));
+
+// Building a slider component
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn__left');
+const btnRight = document.querySelector('.slider__btn__right');
+
+let curSlide = 0;
+const maxSlide = slides.length;
+
+slides.forEach((s, i) => (s.style.transform = `translateX()`));
+
+// 0%, 100%, 200%, 300%
+
+// next slide
+btnRight.addEventListener('click', function () {
+  if (curSlide === maxSlide) {
+    curSlide = 0;
+  }
+  curSlide++;
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)} % )`),
+  );
+});
