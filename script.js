@@ -265,12 +265,27 @@ slides.forEach((s, i) => (s.style.transform = `translateX()`));
 // 0%, 100%, 200%, 300%
 
 // next slide
-btnRight.addEventListener('click', function () {
-  if (curSlide === maxSlide) {
-    curSlide = 0;
-  }
-  curSlide++;
-  slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)} % )`),
-  );
+// btnRight.addEventListener('click', function () {
+//   if (curSlide === maxSlide) {
+//     curSlide = 0;
+//   }
+//   curSlide++;
+//   slides.forEach(
+//     (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)} % )`),
+//   );
+// });
+
+// Lifecycle dom event
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('HTML parsed and DOM tree built!');
 });
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.defaultPrevented();
+//   console.log(e);
+//   e.returnValue = 'message';
+// });
